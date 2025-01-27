@@ -1,179 +1,534 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IIT Delhi 2024-25</title>
+    <title>MTL101 Course Material</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Course materials and tutorials for APL100.">
+    <meta name="author" content="Monil">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    
     <style>
-        body {
-            background-image: url('https://imgs.search.brave.com/veemZ7bpeX3eQ6Nd-MU_5_MyeKB4CHzGo_-aZJx5JFM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNy8x/MC8zMS8xNy80NC9j/aGVycmllcy0yOTA1/OTY0XzY0MC5qcGc');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 0;
+    body {
+        background-image: url('https://imgs.search.brave.com/SrBMLG1Hjlt5B-sLrECJw0-bFsfLLkC8EvEqi95F-p4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bGlnaHRzdGFsa2lu/Zy5jb20vd3AtY29u/dGVudC91cGxvYWRz/L0t5bG8tUmVuLTEw/MjR4NjA3LmpwZWc');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', Arial, sans-serif;
+        color: white;
+    }
+
+    h1, h2 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    h1 {
+        font-size: 3em;
+        color: #FFD700;
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
+        animation: glow 1.5s infinite alternate;
+        background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .dropdown {
+        margin: 20px auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #333;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: margin-bottom 0.3s ease;
+        width: 90%; /* Adjust width for smaller screens */
+        max-width: 800px; /* Limit the maximum width */
+    }
+
+    .dropdown-header {
+        padding: 12px 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+        background-color: #62a4e9;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 10px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .dropdown-header:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        background-color: rgba(26, 86, 135, 0.8);
+        transition: max-height 0.5s ease;
+    }
+
+    .dropdown-content.open {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        background-color: #0a5068;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown-content a:hover {
+        background-color: #0056b3;
+    }
+
+    .dropdown-content::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb {
+        background-color: #62a4e9;
+        border-radius: 10px;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+        .dropdown-header {
+            font-size: 1em; /* Reduce font size for smaller screens */
         }
 
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: rgb(0, 0, 0);
-            background-color: #62a4e9;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin: 0 auto; /* This aligns the button horizontally */
-            display: block; /* Ensures the margin auto takes effect */
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .column {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            padding: 15px;
-            overflow: hidden;
+        .dropdown-content a {
+            font-size: 0.9em; /* Reduce link size for smaller screens */
+            padding: 8px; /* Reduce padding for smaller screens */
         }
 
         h1 {
-            text-align: center;
-            color: #de830c;
-            font-size: 24px;
+            font-size: 2em; /* Adjust heading size for smaller screens */
         }
 
         h2 {
-            text-align: center;
-            color: #333;
+            font-size: 1.5em; /* Adjust subheading size for smaller screens */
         }
-        h3 {
-            text-align: center;
-            color: #b49f9f;
-        }
+    }
+</style>
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
 
-        ul li {
-            margin: 10px 0;
-        }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const outerDropdowns = document.querySelectorAll('.dropdown.outer');
 
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
+            outerDropdowns.forEach(outer => {
+                const outerHeader = outer.querySelector('.dropdown-header');
+                const outerContent = outer.querySelector('.dropdown-content');
 
-        .bottom-button {
-            position: fixed;
-            bottom: 20px;
-            left: 10%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            font-size: 16px;
-            color: rgb(255, 255, 255);
-            background-color: #0a5068;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+                outerHeader.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const isOpen = outerContent.classList.contains('open');
+                    closeAllDropdowns();
+                    if (!isOpen) {
+                        outerContent.classList.add('open');
+                    }
+                });
 
-        .bottom-button:hover {
-            background-color: #0056b3;
-        }
+                const innerDropdowns = outer.querySelectorAll('.dropdown.inner');
+                innerDropdowns.forEach(inner => {
+                    const innerHeader = inner.querySelector('.dropdown-header');
+                    const innerContent = inner.querySelector('.dropdown-content');
 
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
+                    innerHeader.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        const isOpen = innerContent.classList.contains('open');
+                        closeInnerDropdowns(outer);
+                        if (!isOpen) {
+                            innerContent.classList.add('open');
+                        }
+                    });
+
+                    const innerMostDropdowns = inner.querySelectorAll('.dropdown.inner-most');
+                    innerMostDropdowns.forEach(innerMost => {
+                        const innerMostHeader = innerMost.querySelector('.dropdown-header');
+                        const innerMostContent = innerMost.querySelector('.dropdown-content');
+
+                        innerMostHeader.addEventListener('click', (event) => {
+                            event.stopPropagation();
+                            const isOpen = innerMostContent.classList.contains('open');
+                            closeInnerMostDropdowns(inner);
+                            if (!isOpen) {
+                                innerMostContent.classList.add('open');
+                            }
+                        });
+                    });
+                });
+            });
+
+            function closeAllDropdowns() {
+                document.querySelectorAll('.dropdown-content').forEach(content => {
+                    content.classList.remove('open');
+                });
             }
 
-            h1 {
-                font-size: 18px;
+            function closeInnerDropdowns(outer) {
+                outer.querySelectorAll('.dropdown.inner .dropdown-content').forEach(content => {
+                    content.classList.remove('open');
+                });
             }
 
-            .bottom-button {
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
+            function closeInnerMostDropdowns(inner) {
+                inner.querySelectorAll('.dropdown.inner-most .dropdown-content').forEach(content => {
+                    content.classList.remove('open');
+                });
             }
-        }
-    </style>
+
+            document.addEventListener('click', () => {
+                closeAllDropdowns();
+            });
+        });
+    </script>
 </head>
 <body>
-    <h1><a href="https://dalla111.github.io/homepage/" ><img src="https://jwalamukhi.iitd.ac.in/images/Jwala_logo_extra_small_2.png" alt="Logo" ></a> IIT Delhi 2024-25</h1>
-
+    <h1><a href="https://dalla111.github.io/homepage/" ><img src="https://jwalamukhi.iitd.ac.in/images/Jwala_logo_extra_small_2.png" alt="Logo" ></a>MTL101 Course Material</h1>
     <div class="container">
-        <div class="column">
-            <h2>Minor 1</h2>
-            <ul>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2013-14_Sem2.pdf" target="_blank" class="button">Sem2 | 2013-14</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2014-15_Sem2.pdf" target="_blank" class="button">Sem2 | 2014-15</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2015-16_Sem1.pdf" target="_blank" class="button">Sem1 | 2015-16</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2015-16_Sem2.jpg" target="_blank" class="button">Sem2 | 2015-16</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2016-17_Sem1.pdf" target="_blank" class="button">Sem1 | 2016-17</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2016-17_Sem2.pdf" target="_blank" class="button">Sem2 | 2016-17</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2017-18_Sem1.pdf" target="_blank" class="button">Sem1 | 2017-18</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2017-18_Sem2-1.jpg" target="_blank" class="button">Sem2 | 2017-18</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2020-21_Sem1.pdf" target="_blank" class="button">Sem1 | 2020-21</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2021-22_Sem1.pdf" target="_blank" class="button">Sem1 | 2021-22</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2022-23_Sem1.pdf" target="_blank" class="button">Sem1 | 2022-23</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2023-24_Sem1.pdf" target="_blank" class="button">Sem1 | 2023-24</a></li>
-</ul>
+        <div class="section">
+            
+            <div class="dropdown outer">
+                <div class="dropdown-header">IIT KANPUR</div>
+                <div class="dropdown-content">
+                    
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">ASSINGMENT</div>
+                        <div class="dropdown-content">
+                            
+                            <div class="dropdown inner-most">
+                                <div class="dropdown-header">linear Algebra</div>
+                                <div class="dropdown-content">
+                                    <a href="https://drive.google.com/drive/folders/1JXX1lSZBEtSygXZ0bxwTX33AXl1C2Nqg?usp=drive_link">Solutions</a>
+                                    <a href="https://drive.google.com/file/d/1OWmYhPhUwdes2SPSfG66c9_55-ScbKZ5/view?usp=drive_link">Assignment 1</a>
+                                    <a href="https://drive.google.com/file/d/1iCWhJerHYNefFPeA7hFOo3XZaIe7T6Vr/view?usp=drive_link">Assignment 2</a>
+                                    <a href="https://drive.google.com/file/d/1zvVgFHAeoY7TcYHAlwP3AnfPbvyhYvol/view?usp=drive_link">Assignment 3</a>
+                                    <a href="https://drive.google.com/file/d/1sR-wBGLhKm9-0A8W0cSrKlf88spSzQte/view?usp=drive_link">Assignment 4</a>
+                                    <a href="https://drive.google.com/file/d/1K-MKyViLByeCxS2stUBmtUalzAUt8m4N/view?usp=drive_link">Assignment 5</a>
+                                    <a href="https://drive.google.com/file/d/1Qzt81P4ogqccshW59AnC98gArcqqoEdv/view?usp=drive_link">Assignment 6</a>
 
-        </div>
-        <div class="column">
-            <h2>Minor 2</h2>
-            <ul>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2014-15_Sem2.pdf" target="_blank" class="button">Sem2 | 2014-15</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2015-16_Sem1.pdf" target="_blank" class="button">Sem1 | 2015-16</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2015-16_Sem2.pdf" target="_blank" class="button">Sem2 | 2015-16</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2017-18_Sem1.pdf" target="_blank" class="button">Sem1 | 2017-18</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2019-20_Sem2-2.pdf" target="_blank" class="button">Sem2 | 2019-20</a></li>
-    <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2019-20_Sem2.pdf" target="_blank" class="button">Sem2 | 2019-20</a></li>
-</ul>
-</div>
-<div class="column">
-    <h2>Majors</h2>
-    <ul>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2006-07_Sem1.pdf" target="_blank" class="button">Sem1 | 2006-07</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2008-09_Sem1.pdf" target="_blank" class="button">Sem1 | 2008-09</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2014-15_Sem2.pdf" target="_blank" class="button">Sem2 | 2014-15</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2015-16_Sem1.pdf" target="_blank" class="button">Sem1 | 2015-16</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2015-16_Sem2.pdf" target="_blank" class="button">Sem2 | 2015-16</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2016-17_Sem1.pdf" target="_blank" class="button">Sem1 | 2016-17</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2017-18_Sem1.pdf" target="_blank" class="button">Sem1 | 2017-18</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2018-19_Sem1.pdf" target="_blank" class="button">Sem1 | 2018-19</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2020-21_Sem1.pdf" target="_blank" class="button">Sem1 | 2020-21</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2021-22_Sem1.pdf" target="_blank" class="button">Sem1 | 2021-22</a></li>
-        <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2022-23_Sem1.pdf" target="_blank" class="button">Sem1 | 2022-23</a></li>
-    </ul>
-</div>
+                                </div>
+                            </div>
+                            <div class="dropdown inner-most">
+                                <div class="dropdown-header">ODE</div>
+                                <div class="dropdown-content">
+                                    <a href="https://drive.google.com/drive/folders/1OxnkHkqzyKPGjvRbCdGtYV_qYT5mUAOE?usp=drive_link">Solutions</a>
+                                    <a href="https://drive.google.com/file/d/1QqtV9AgsfY0WHxPw6aEVt3KjflG3d4Jc/view?usp=drive_link">Assignment 1</a>
+                                    <a href="https://drive.google.com/file/d/1IvCi3_En2HJMwn6wxJD84uTaCcPMZjh1/view?usp=drive_link">Assignment 2</a>
+                                    <a href="https://drive.google.com/file/d/1GHT-2wWDzTv4Zqg0epCkc-PJlFM1ertt/view?usp=drive_link">Assignment 3</a>
+                                    <a href="https://drive.google.com/file/d/12AfUOhnS3gZB79OQWwt63dwBoYOPotVY/view?usp=drive_link">Assignment 4</a>
+                                    <a href="https://drive.google.com/file/d/145IXb7yTFiMX_m4meCrXVuY7VqzJHcmc/view?usp=drive_link">Assignment 5</a>
+                                    <a href="https://drive.google.com/file/d/1iYIhxFR_KolC37rngro1UESjqNroMlFS/view?usp=drive_link">Assignment 6</a>
+                                    <a href="https://drive.google.com/file/d/1h4WTasSwVVxBSRUHRl_FGSYYZSrin7Ch/view?usp=drive_link">Assignment 7</a>
 
+                                </div>
+                            </div>
+                            
+                           
+                        
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">EXAM</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1pSq_w_8AuPt_ZvpWQMNyZcCdfW40Yv8R/view?usp=drive_link">Major Solutions</a>
+                                        <a href="https://drive.google.com/file/d/1di8jE7D5FQJR3LIXAmJ_KE7Pdv9DrLT2/view?usp=drive_link">Minor Solutions</a>
+                                        <a href="https://drive.google.com/file/d/1lIujX493USQVQww1PUMENaDK2fTo3bps/view?usp=drive_link">Quiz 1 - Set A Solutions</a>
+                                        <a href="https://drive.google.com/file/d/1TmKI6ujsjdE4Gb2KL_acfsp-PVf3nMQZ/view?usp=drive_link">Quiz 1 - Set B Solutions</a>
+                                        <a href="https://drive.google.com/file/d/1T2C00GCQdE403l-Jkw5yjGq7DkJnUzmp/view?usp=drive_link">Quiz 2 - Set A Solutions</a>
+                                        <a href="https://drive.google.com/file/d/1Qpi5DmdKHG-BnGgtI1S2uBRHmZ52GEHc/view?usp=drive_link">Quiz 2 - Set B Solutions</a>
+                            
+                           
+                        
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">LECTURE NOTES</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1Su310Z6s5sKpELiClxLcjeGHDhawaTTo/view?usp=drive_link">Lecture 00</a>
+                            <a href="https://drive.google.com/drive/folders/1SlWqKVqXBhLL49OLtJM7g1J0nwKFj1B1?usp=drive_link">Lecture 01</a>
+                            <a href="https://drive.google.com/file/d/191ZjIpPUEH_5x7_Mo-kveYEIuA9lEgW6/view?usp=drive_link">Lecture 02</a>
+                            <a href="https://drive.google.com/file/d/1FgdtIjKreWmVHwWwUifPZJjAZZ0Y5Dix/view?usp=drive_link">Lecture 03</a>
+                            <a href="https://drive.google.com/file/d/1L4CVkjYFa7UnmUKvNK-817EUOJwGcMFB/view?usp=drive_link">Lecture 04</a>
+                            <a href="https://drive.google.com/file/d/1272y0Fd7Z9WDDHPZK0EVb_lRI2S1NDnG/view?usp=drive_link">Lecture 05</a>
+                            <a href="https://drive.google.com/file/d/1_23hG8R_uwM3rvZ1fBLeP8Xge8RBHdVN/view?usp=drive_link">Lecture 06</a>
+                            <a href="https://drive.google.com/file/d/1mk0qraKdm8cciA4mcPKvSHEBaS3vJGIc/view?usp=drive_link">Lecture 07</a>
+                            <a href="https://drive.google.com/file/d/10DXzVeLEXY0kFu32l6wO98bEJ6njQFB-/view?usp=drive_link">Lecture 08</a>
+                            <a href="https://drive.google.com/file/d/1ivFWtcZrmAlDHDjoKv_2lTWTLlaj2aku/view?usp=drive_link">Lecture 09</a>
+                            <a href="https://drive.google.com/file/d/1S-gD3dSLKO0f_iOjqhKjmYFkxInvZdxC/view?usp=drive_link">Lecture 10</a>
+                            <a href="https://drive.google.com/file/d/1ZIPDQoBayZHkhjzouYFOs4YScAO71ZDd/view?usp=drive_link">Lecture 11</a>
+                            <a href="https://drive.google.com/file/d/1Sheuo65OQ7z09Dz505uNnjB4Wqcui5ZP/view?usp=drive_link">Lecture 12</a>
+                            <a href="https://drive.google.com/file/d/1tlDgT82fzfut4W5qFDtIHIDMJ3OKGOfo/view?usp=drive_link">Lecture 13</a>
+                            <a href="https://drive.google.com/file/d/1O21Ewla81GwDZ8tEPi1yxKhpX53f281U/view?usp=drive_link">Lecture 14</a>
+                            <a href="https://drive.google.com/file/d/1ZtNMw-B2k5LXktQxNH0lpSA3yuC-WXNa/view?usp=drive_link">Lecture 15</a>
+                            <a href="https://drive.google.com/file/d/1FZ2Tyy5xsfcxbu3bCRVO63DiBZva-Luw/view?usp=drive_link">Lecture 16</a>
+                            <a href="https://drive.google.com/file/d/1o4wEh5rH0W-fsuvSkuM20dEXzfkJ1bH-/view?usp=drive_link">Lecture 17</a>
+                            <a href="https://drive.google.com/file/d/1X3eqyvVOy7ZPmJS5oKQ7M6rL7sLJSCMU/view?usp=drive_link">Lecture 18</a>
+                            <a href="https://drive.google.com/file/d/139IYZtVmaW-rbdETKS3rTjLThilKO2Jz/view?usp">Lecture 19</a>
+                             
+                           
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="dropdown outer">
+                <div class="dropdown-header">BOOKS</div>
+                <div class="dropdown-content">
+                    <a href="https://drive.google.com/file/d/1cMA6WjadeKh6ssIVXFKBZIPqR4ucuDZu/view?usp=drive_link">[Axler] Linear Algebra Done Right.pdf</a>
+                    <a href="https://drive.google.com/file/d/11n0FZDU5f1WsKmHUAh-peVsL8jdLK7jW/view?usp=drive_link">[Coddington] Introduction to Ordinary Differential Equations.pdf</a>
+                    <a href="https://drive.google.com/file/d/1X7gr_BOLfmCmlAnmqLExRe7hKvf7BGPQ/view?usp=drive_link">[Erwin Kreyzig] Advanced Engineering Math.pdf</a>
+                    <a href="https://drive.google.com/file/d/10brXOyl_q7k584LL0nt1TR6zI2bju8qo/view?usp=drive_link">[Michael Artin] Algebra, Second Edition.pdf</a>
+                    <a href="https://drive.google.com/file/d/1NLbp1uJBPFdvbQXX57IY5HhN9Ss_AuXD/view?usp=drive_link">[Strang] Introduction to Linear Algebra.pdf</a>
+                    <a href="https://drive.google.com/file/d/12j9S3JabB1CYfoiGWoG6V1EpOsLwMIPv/view?usp=drive_link">[Strang] Solutions.pdf</a>
+                </div>
+            </div>
+            <div class="dropdown outer">
+                <div class="dropdown-header">Previous Year Resources</div>
+                <div class="dropdown-content">
+                    
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Fall 2006</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1MBbKapM8S-w0oUCFl0h3X3GoztUq0bnu/view?usp=drive_link">Major</a>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Fall 2008</div>
+                        <div class="dropdown-content">
+                           <a href="https://drive.google.com/file/d/16gG24XeBQqisqr9CoQWnf3rOzmIas1X2/view?usp=drive_link">Major</a> 
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Fall 2013</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1NxW4iinfc6eK8MyJqW-j2ci_rCL0RkPA/view?usp=drive_link">Major</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Fall 2014</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1BLfuCdZ0s369-STsTkPVpk2PadK_LqHo/view?usp=drive_link">Major</a>
+                            <a href="https://drive.google.com/file/d/1bBMNQIhW8jthmbQftWe92_7OC0XVtLRU/view?usp=drive_link">Major Solution</a>
+                            <a href="https://drive.google.com/file/d/1vM12N6rVQhhlJww23DIAsfErcj-r91qw/view?usp=drive_link">Minor 1  </a>
+                            <a href="https://drive.google.com/file/d/1_zq50nUC3S2wu8RZ_lbx0OFvNlVgR7m_/view?usp=drive_link">Minor 2</a>
+                            <a href="https://drive.google.com/file/d/1CdEZ2oVrKFmGqzgbVxUeCEOsl8rhS8fI/view?usp=drive_link">Minor 1 Solution</a>
+                            <a href="https://drive.google.com/file/d/1D9GmZkUBVrIPOD7-j-XRAEgu5FSUG9_-/view?usp=drive_link">Minor 2 Solution</a>
+                           </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Fall 2015</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1bFqbyILstA2GJCz7XbzjSE1LUBOpdbaF/view?usp=drive_link">Major</a>
+                            <a href="https://drive.google.com/file/d/1BfNYoT-dZ0decNPF3JqW951-X5bLMGEt/view?usp=drive_link">Major Solution</a>
+                            <a href="https://drive.google.com/file/d/1bFqbyILstA2GJCz7XbzjSE1LUBOpdbaF/view?usp=drive_link">Minor 1  </a>
+                            <a href="https://drive.google.com/file/d/1SPOxPazUx6VEwD6BVwmaW8x9njVBgDpI/view?usp=drive_link">Minor 2</a>
+                            <a href="https://drive.google.com/file/d/1CdEZ2oVrKFmGqzgbVxUeCEOsl8rhS8fI/view?usp=drive_link">Quiz 1</a>
+                            
+                           </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Fall 2016</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/file/d/1xA6jW2TVa0tiN0gLqRY5BVeFuo7f2yn9/view?usp=drive_link">Major</a>
+                            <a href="https://drive.google.com/file/d/15HxMvl05AIgeKzavc99kDPFSNj1VLPF0/view?usp=drive_link">Major Solution</a>
+                            <a href="https://drive.google.com/file/d/1rFZ0x3LRx5IOGdQi2t9NLEWHbUAq2p_T/view?usp=drive_link">Minor 1  </a>
+                            <a href="https://drive.google.com/file/d/104I58lD9rSdbVr-FEMsm2fne02XS6MML/view?usp=drive_link">Minor 1 Solutions </a>
+                            <a href="https://drive.google.com/file/d/1jm1VdC3cZgsvhaNVSxDznYbDZxWCK-bN/view?usp=drive_link">Minor 2</a>
+                            <a href="https://drive.google.com/file/d/1tnlxy3OfvQsCXdTCMLDw8MjaasGmq_dF/view?usp=drive_link">Quiz 1</a>
+                            <a href="https://drive.google.com/file/d/1iecJlwoJAzOHBx8SPbztrAyCA-UB7EZ_/view?usp=drive_link">Quiz 2</a>
+                            <a href="https://drive.google.com/file/d/1q6u50taYJ6j7EqzbWDKqbTQeIbiBrTSg/view?usp=drive_link">Reminor</a>
+                            
+                           </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2014</div>
+                        <div class="dropdown-content">
+                            
+                            <a href="https://drive.google.com/drive/folders/1YYgiAPK83k6z27l9gnSLqROxQoMApsAu?usp=drive_link">Spring 2014</a>>
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2016</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1vklUitfG_UV1ZHhbL9Pc6Ajm2HnTxo3E?usp=drive_link">Spring 2016</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2017</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1QaCyOlpI_SkeSBK_PDMgxg7EKeTUbxz-?usp=drive_link">Spring 2017</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2018</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/17H747247gpEOHFZUXlC27Vpap5kKA4iz?usp=drive_link">Spring 2018</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2019</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1Z1xXVse7n12-rcF9NpCMtuvuStmn0rCJ?usp=drive_link">Spring 2019</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2020</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1Eue0HHTKVy_58i9C02kRYnYWY8QNi4_z?usp=drive_link">Spring 2020</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2021</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1267zPkPXasTU3kL7V_GxMo3ccdAwuTAo?usp=drive_link">Spring 2021</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2022</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1fF7Rh5TWnlu1lXV9MUNFysLtsVjKc10h?usp=drive_link">Spring 2022</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2023</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1xhkt4wpv-45oLLszzg72K-lMZXoTQ0wG?usp=drive_link">Spring 2023</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Spring 2024</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1pqw-_v7fijZMh2a6fCDrkbUbWwCT-kn6?usp=drive_link">Spring 2024</a>
+                            
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Miscellaneous Year</div>
+                        <div class="dropdown-content">
+                            <a href="https://drive.google.com/drive/folders/1UDE4_wQsjJh1k8JyTWduI5Ave0BxXyNe?usp=drive_link">Miscellaneous Year</a>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="dropdown outer">
+                <div class="dropdown-header">BSW Resources</div>
+                <div class="dropdown-content">
+                    
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Minor 1</div>
+                        <div class="dropdown-content">
+                            
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2013-14_Sem2.pdf" target="_blank" class="button">Sem2 | 2013-14</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2014-15_Sem2.pdf" target="_blank" class="button">Sem2 | 2014-15</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2015-16_Sem1.pdf" target="_blank" class="button">Sem1 | 2015-16</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2015-16_Sem2.jpg" target="_blank" class="button">Sem2 | 2015-16</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2016-17_Sem1.pdf" target="_blank" class="button">Sem1 | 2016-17</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2016-17_Sem2.pdf" target="_blank" class="button">Sem2 | 2016-17</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2017-18_Sem1.pdf" target="_blank" class="button">Sem1 | 2017-18</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2017-18_Sem2-1.jpg" target="_blank" class="button">Sem2 | 2017-18</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2020-21_Sem1.pdf" target="_blank" class="button">Sem1 | 2020-21</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2021-22_Sem1.pdf" target="_blank" class="button">Sem1 | 2021-22</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2022-23_Sem1.pdf" target="_blank" class="button">Sem1 | 2022-23</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor1/MTL101_Minor1_2023-24_Sem1.pdf" target="_blank" class="button">Sem1 | 2023-24</a></li>
+                            <div class="dropdown inner-most">
+                                <div class="dropdown-header">ODE</div>
+                                <div class="dropdown-content">
+                                    <a href="https://drive.google.com/drive/folders/1OxnkHkqzyKPGjvRbCdGtYV_qYT5mUAOE?usp=drive_link">Solutions</a>
+                                    <a href="https://drive.google.com/file/d/1QqtV9AgsfY0WHxPw6aEVt3KjflG3d4Jc/view?usp=drive_link">Assignment 1</a>
+                                    <a href="https://drive.google.com/file/d/1IvCi3_En2HJMwn6wxJD84uTaCcPMZjh1/view?usp=drive_link">Assignment 2</a>
+                                    <a href="https://drive.google.com/file/d/1GHT-2wWDzTv4Zqg0epCkc-PJlFM1ertt/view?usp=drive_link">Assignment 3</a>
+                                    <a href="https://drive.google.com/file/d/12AfUOhnS3gZB79OQWwt63dwBoYOPotVY/view?usp=drive_link">Assignment 4</a>
+                                    <a href="https://drive.google.com/file/d/145IXb7yTFiMX_m4meCrXVuY7VqzJHcmc/view?usp=drive_link">Assignment 5</a>
+                                    <a href="https://drive.google.com/file/d/1iYIhxFR_KolC37rngro1UESjqNroMlFS/view?usp=drive_link">Assignment 6</a>
+                                    <a href="https://drive.google.com/file/d/1h4WTasSwVVxBSRUHRl_FGSYYZSrin7Ch/view?usp=drive_link">Assignment 7</a>
+
+                                </div>
+                            </div>
+                            
+                           
+                        
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Minor2</div>
+                        <div class="dropdown-content">
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2014-15_Sem2.pdf" target="_blank" class="button">Sem2 | 2014-15</a></li>
+                                <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2015-16_Sem1.pdf" target="_blank" class="button">Sem1 | 2015-16</a></li>
+                                <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2015-16_Sem2.pdf" target="_blank" class="button">Sem2 | 2015-16</a></li>
+                                <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2017-18_Sem1.pdf" target="_blank" class="button">Sem1 | 2017-18</a></li>
+                                <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2019-20_Sem2-2.pdf" target="_blank" class="button">Sem2 | 2019-20</a></li>
+                                <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/minor2/MTL101_Minor2_2019-20_Sem2.pdf" target="_blank" class="button">Sem2 | 2019-20</a></li>
+                            
+                           
+                        
+                        </div>
+                    </div>
+                    <div class="dropdown inner">
+                        <div class="dropdown-header">Majors</div>
+                        <div class="dropdown-content">
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2006-07_Sem1.pdf" target="_blank" class="button">Sem1 | 2006-07</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2008-09_Sem1.pdf" target="_blank" class="button">Sem1 | 2008-09</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2014-15_Sem2.pdf" target="_blank" class="button">Sem2 | 2014-15</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2015-16_Sem1.pdf" target="_blank" class="button">Sem1 | 2015-16</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2015-16_Sem2.pdf" target="_blank" class="button">Sem2 | 2015-16</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2016-17_Sem1.pdf" target="_blank" class="button">Sem1 | 2016-17</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2017-18_Sem1.pdf" target="_blank" class="button">Sem1 | 2017-18</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2018-19_Sem1.pdf" target="_blank" class="button">Sem1 | 2018-19</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2020-21_Sem1.pdf" target="_blank" class="button">Sem1 | 2020-21</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2021-22_Sem1.pdf" target="_blank" class="button">Sem1 | 2021-22</a></li>
+                            <li><a href="https://bsw.iitd.ac.in/studydatabase/MTL/MTL101/major/MTL101_Major_2022-23_Sem1.pdf" target="_blank" class="button">Sem1 | 2022-23</a></li>
+                                                
+                           
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
+        <footer>
+            <p>&copy; 2025 Developed by Monil</p>
+            <p><a href="mailto:monilsavaliya416@gmail.com" style="color: white;">Contact for changes</a></p>
+        </footer>
     </div>
-    
-    <footer>
-        <h3>DEVELOPED BY MONIL</h3>
-        <p><a href="mailto:monilsavaliya416@gmail.com">FOR ANY CHANGES CONTACT: MONIL</a></p>
-        <p>&copy; 2025</p>
-    </footer>
-
-
 </body>
 </html>
